@@ -1,31 +1,43 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import faker from 'faker'
+import CommentDetail from './CommentDetail'
+import ApprovalCard from './ApprovalCard'
 
 // Live Reloading
 if (module.hot) {
-    module.hot.accept();
-  }
-
-const App = () => {
-    return (
-      <div className="ui container comments">
-          <div className="comment">
-            <a href="/" className="avatar">
-                <img alt="avatar" src={faker.image.avatar()} />
-            </a>
-            <div className="content">
-                <a href="/" className="author">
-                    Sam
-                </a>
-                <div className="metadata">
-                    <span className="date">Today at 6:00PM</span>
-                </div>
-                <div className="text">Nice blog post!</div>
-            </div>
-          </div>
-      </div>  
-    )
+  module.hot.accept()
 }
 
-ReactDOM.render(<App/>,document.querySelector('#root'))
+const App = () => {
+  return (
+    <div className='ui container comments'>
+      <ApprovalCard>
+        <CommentDetail
+          author='Sam'
+          timeAgo='Today at 4:45PM'
+          content='Nice blog post'
+          avatar={faker.image.avatar()}
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          author='Alex'
+          timeAgo='Today at 4:45PM'
+          content='I like the subject'
+          avatar={faker.image.avatar()}
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          author='Jane'
+          timeAgo='Today at 4:45PM'
+          content='I like the writing'
+          avatar={faker.image.avatar()}
+        />
+      </ApprovalCard>
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'))
